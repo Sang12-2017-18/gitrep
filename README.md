@@ -1,14 +1,18 @@
 Commands used:
+     
      git config user.name "MyUserName"
      git config user.email "***@example.com"
      mkdir gitrep
 After moving to gitrep:
+     
      git init
      touch readme
      git commit -m "first commit"
      git remote add origin https://github.com/<Username>/gitrep.git.
 After this command, I created a gitrep repository in the website.Then I typed this:
+     
      git push -u origin master
+
 My file got uploaded to github with the following output:
 
      Username for 'https://github.com': Sang12-2017-18
