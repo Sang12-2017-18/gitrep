@@ -3,6 +3,7 @@
 #define MAX 100  
 void push(int *s,int ele,int *top);
 int pop(int *s,int *top); 
+int* multipop(int *s,int *top,int k); 
 void palin(int *s,int *top); 
 void display(int *s,int top);
 int main()
@@ -53,6 +54,20 @@ int pop(int s[],int *top)
         return s[(*top)--];
 } 
 
+int* multipop(int s[],int *top,int k) 
+{
+    int *p=(int*)malloc(k*sizeof(int));
+    if(p==NULL)
+    {
+        printf("Not enough memory\n");
+        return NULL;
+    } 
+    int i;
+    for(i=0;i<k;i++)
+       *(p+i)=pop(s,top);
+    return p;
+}  
+
 void display(int s[],int top)
 {
     if(top==-1)
@@ -69,8 +84,8 @@ void display(int s[],int top)
 
 void palin(int s[],int *top)
 {
-    *top=-1;                                       //clearing previous contents of stack 
-    int A[MAX],m,i,B[MAX];
+    int A[MAX],m,i;
+    int *B=NULL; 
     printf("Enter the no of digits in number: ");
     scanf("%d",&m);
     printf("Enter the elements: ");
@@ -78,8 +93,7 @@ void palin(int s[],int *top)
        scanf("%d",&A[i]);
     for(i=0;i<m;i++)
        push(s,A[i],top);
-    for(i=0;i<m;i++)
-       B[i]=pop(s,top);
+    B=multipop(s,top,m);
     for(i=0;i<m;i++)
        if(A[i]!=B[i])
        {
@@ -87,4 +101,5 @@ void palin(int s[],int *top)
            return ;
        }
     printf("It is a palindrome\n");
+    free(B); 
 }  
