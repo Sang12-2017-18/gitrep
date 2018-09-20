@@ -17,7 +17,7 @@ int main()
   char b[80],stack[80],post[100];
   int top=-1,i=0,j=0 ;
   char c[80]; 
-  printf("Enter infix expression: ");
+  printf("Enter infix expression: ") ;
   scanf("%s",c);
   strcpy(b,"(");
   strcat(b,c);
